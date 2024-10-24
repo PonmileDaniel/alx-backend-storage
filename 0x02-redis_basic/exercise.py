@@ -2,8 +2,6 @@
 """
 This module provides a Cache class that interacts with a Redis db.
 """
-
-
 import redis
 import uuid
 from typing import Union
