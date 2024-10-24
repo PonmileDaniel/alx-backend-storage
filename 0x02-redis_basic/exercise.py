@@ -1,4 +1,4 @@
-#!/usr/bin/env pythin3
+#!/usr/bin/env python3
 """
 This module provides a Cache class that interacts with a Redis db.
 """
