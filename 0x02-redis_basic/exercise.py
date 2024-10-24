@@ -5,6 +5,21 @@ This module provides a Cache class that interacts with a Redis db.
 import redis
 import uuid
 from typing import Union, Callable, Optional
+from functools import wraps
+
+
+def count_calls(method: Callable) -> Callable:
+    """
+    Decorator to count
+    """
+
+    @wraps(methd)
+    def wrapper(self, *args, **kwargs):
+        key = method.__qualname__
+        self.redis.incr(key)
+        return method(self, *args, **kwargs)
+
+    return wrapper
 
 
 class Cache:
@@ -19,6 +34,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Storage the input data in redis using a random key
@@ -50,4 +66,4 @@ class Cache:
         """
         Retrieve data as an integer
         """
-        return self.get(key, fn=int)
+        return sZZelf.get(key, fn=int)
