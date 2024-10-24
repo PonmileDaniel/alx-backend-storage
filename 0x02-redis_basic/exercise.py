@@ -47,9 +47,9 @@ def replay(method: Callable) -> None:
     outputs = redis_instance.lrange(output_key, 0, -1)
     print(f"{method_name} was called {len(inputs)} times:")
     for input_args, output in zip(inputs, outputs):
-        print(
-            f"{method_name}(*{input_args.decode('utf-8')}) -> {output.decode('utf-8')}"
-        )
+        input_str = input_args.decode("utf-8")
+        output_str = output.decode("utf-8")
+        print(f"{method_name}(*{input_str}) -> {output_str}")
 
 
 class Cache:
