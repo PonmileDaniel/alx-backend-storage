@@ -1,5 +1,2 @@
-// my comment
-#!/usr/bin/env bash
-# Connect to MongoDB
-
-mongo --quiet --eval "db.adminCommand('listDatabases')"
+// list db
+show dbs
