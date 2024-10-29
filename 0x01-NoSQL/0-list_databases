@@ -2,4 +2,4 @@
 #!/usr/bin/env bash
 # Connect to MongoDB
 
-mongosh --quiet --eval "db.adminCommand('listDatabases')"
+mongo --quiet --eval "db.adminCommand('listDatabases')"
